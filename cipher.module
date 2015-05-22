@@ -49,18 +49,20 @@ function cipher_form_submit($form, &$form_state) {
     $word_array_into_int = array();
     if ($shift_direction == 'left') {
         foreach($word_array as $element) {
-            if(ord($element) < 97 || ord($element) > 122) {
-                array_push($word_array_into_int, chr($element));
-                break;
-            }
             $element = ord($element) - 97;
-            $element -= $shift_value;
-            if($element < 0) {
+            if($element < 0 || $element > 26) {
+                $element+= 97;
+                array_push($word_array_into_int, chr($element));
+            }
+            elseif($element - $shift_value < 0) {
+                $element -= $shift_value;
                 $element += 26;
                 $element += 97;
                 array_push($word_array_into_int, chr($element));
             }
-            else {
+            elseif ($element >= 0 && $element <= 26)
+            {
+                $element -= $shift_value;
                 $element += 97;
                 array_push($word_array_into_int, chr($element));
             }
@@ -69,18 +71,20 @@ function cipher_form_submit($form, &$form_state) {
 
     elseif ($shift_direction == 'right') {
         foreach($word_array as $element) {
-            if(ord($element) < 97 || ord($element) > 122) {
-                array_push($word_array_into_int, chr($element));
-                break;
-            }
+
             $element = ord($element) - 97;
-            $element += $shift_value;
-            if($element > 26) {
+            if($element < 0 || $element > 26) {
+                $element += 97;
+                array_push($word_array_into_int, chr($element));
+            }
+
+            elseif($element  + $shift_value > 26) {
+                $element += $shift_value;
                 $element %= 26;
                 $element += 97;
                 array_push($word_array_into_int, chr($element));
             }
-            else {
+            elseif ($element >= 0 && $element <= 26) {
                 $element += 97;
                 array_push($word_array_into_int, chr($element));
             }
