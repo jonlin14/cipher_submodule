@@ -20,23 +20,23 @@ function cipher_menu() {
 
 function cipher_form() {
     $form['input_value'] = array(
-        'title' => 'Shift Number',
-        'type' => 'textfield',
-        'description' => 'Enter a value to shift by',
+        '#title' => 'Shift Number',
+        '#type' => 'textfield',
+        '#description' => 'Enter a value to shift by',
     );
     $form['input_direction'] = array(
-        'title' => 'Shift Direction',
-        'type' => 'textfield',
-        'description' => 'Enter a direction to shift through',
+        '#title' => 'Shift Direction',
+        '#type' => 'textfield',
+        '#description' => 'Enter a direction to shift through',
     );
     $form['input_phrase'] = array(
-        'title' => 'Shift Word',
-        'type' => 'textfield',
-        'description' => 'Enter a word to shift through',
+        '#title' => 'Shift Word',
+        '#type' => 'textfield',
+        '#description' => 'Enter a word to shift through',
     );
     $form['submit'] = array(
-        'type' => 'submit',
-        'value' => 'EnCipher!!!'
+        '#type' => 'submit',
+        '#value' => 'EnCipher!!!'
     );
     return $form;
 }
