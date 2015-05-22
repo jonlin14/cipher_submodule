@@ -22,17 +22,20 @@ function cipher_form() {
     $form['input_value'] = array(
         '#title' => 'Shift Number',
         '#type' => 'textfield',
-        '#description' => 'Enter a value to shift by',
+        '#description' => t('Enter a value to shift by'),
+        '#element_validate' => array('element_validate_integer_positive'),
     );
     $form['input_direction'] = array(
         '#title' => 'Shift Direction',
         '#type' => 'textfield',
-        '#description' => 'Enter a direction to shift through',
+        '#description' => t('Enter a direction to shift through'),
+        '#element_validate' => array('element_validate_direction'),
     );
     $form['input_phrase'] = array(
         '#title' => 'Shift Word',
         '#type' => 'textfield',
-        '#description' => 'Enter a word to shift through',
+        '#description' => t('Enter a word to shift through'),
+        '#element_validate' => array('element_validate_special_characters'),
     );
     $form['submit'] = array(
         '#type' => 'submit',
@@ -97,4 +100,20 @@ function cipher_form_submit($form, &$form_state) {
 function show_results() {
     $output = $_SESSION['shifted_word'];
     return $output;
+}
+
+function element_validate_direction($element) {
+    if ($element['#value'] !== 'left' || $element['#value'] !== 'right') {
+        form_error($element, t('Direction must be "left" or "right"'));
+    }
+}
+
+function element_validate_special_characters($element) {
+    $check_this = $element['#value']
+    $check_this_split = str_split($check_this);
+    foreach ($check_this_splite as $element) {
+        if (ctype_alpha($element) == 0 && ctype_punct($element) == 0 ) {
+            form_error($element, t('Only special characters are letters and punctuation'))
+        }
+    }
 }
