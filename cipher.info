@@ -1,0 +1,5 @@
+name: Cipher
+description : Shifts any input by three characters
+package : Epicodus Assessment
+core : 7.x
+files[] = cipher.module
