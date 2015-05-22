@@ -57,5 +57,6 @@ function cipher_form_submit($form, &$form_state) {
 }
 
 function show_results() {
+    $output = $_SESSION['shifted_Word'];
     return $output;
 }
