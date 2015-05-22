@@ -103,8 +103,15 @@ function show_results() {
 }
 
 function element_validate_direction($element) {
-    if ($element['#value'] != 'left' || $element['#value'] != 'right') {
-        form_error($element, t('Direction must be right or left'));
+    $flag = 0;
+    if ($element['#value'] == 'left') {
+        $flag = 1;
+    }
+    if ($element['#value'] == 'right') {
+        $flag = 1;
+    }
+    if ($flag = 0) {
+        form_error($element, t('Direction must be left or right'));
     }
 }
 
