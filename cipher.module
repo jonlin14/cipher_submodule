@@ -40,3 +40,22 @@ function cipher_form() {
     );
     return $form;
 }
+
+function cipher_form_submit($form, &$form_state) {
+    $shift_value = $form_state['values']['input_value'];
+    $shift_direction = $form_state['values']['input_direction'];
+    $shift_word = $form_state['values']['input_phrase'];
+    $word_array = explode(' ', $shift_word);
+    $word_array_into_int = array();
+
+    foreach($word_array as $element) {
+        $element = ord($element) % 24;
+        array.push($word_array_into_int, $element);
+    }
+    $_SESSION['shifted_word'] = $word_array_into_int;
+    $form_state['redirect'] = 'results';
+}
+
+function show_results() {
+    return $output;
+}
