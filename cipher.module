@@ -122,8 +122,8 @@ function element_validate_direction($element) {
 function element_validate_special_characters($element) {
     $check_this = $element['#value'];
     $check_this_split = str_split($check_this);
-    foreach ($check_this_split as $element) {
-        if ((ctype_alpha($element) == false) && (ctype_punct($element) == false)) {
+    foreach ($check_this_split as $given_letter) {
+        if ((ctype_alpha($given_letter) == false) and (ctype_punct($given_letter) == false)) {
             form_error($element, t('Only special characters are letters and punctuation'));
         }
     }
