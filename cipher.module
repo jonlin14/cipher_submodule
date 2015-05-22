@@ -80,6 +80,7 @@ function cipher_form_submit($form, &$form_state) {
     }
     $shifted_word = implode('', $word_array_into_int);
     $_SESSION['shifted_word'];
+    $form_state['redirect'] = 'results';
 }
 
 function show_results() {
