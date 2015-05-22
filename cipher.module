@@ -35,8 +35,8 @@ function cipher_form() {
         'description' => 'Enter a word to shift through',
     );
     $form['submit'] = array(
-        'type' = 'submit',
-        'value' = 'EnCipher!!!'
+        'type' => 'submit',
+        'value' => 'EnCipher!!!'
     );
     return $form;
 }
