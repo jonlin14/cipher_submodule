@@ -24,18 +24,21 @@ function cipher_form() {
         '#type' => 'textfield',
         '#description' => t('Enter a value to shift by'),
         '#element_validate' => array('element_validate_integer_positive'),
+        '#required' => TRUE,
     );
     $form['input_direction'] = array(
         '#title' => 'Shift Direction',
         '#type' => 'textfield',
         '#description' => t('Enter a direction to shift through'),
         '#element_validate' => array('element_validate_direction'),
+        '#required' => TRUE,
     );
     $form['input_phrase'] = array(
         '#title' => 'Shift Word',
         '#type' => 'textfield',
         '#description' => t('Enter a word to shift through'),
         '#element_validate' => array('element_validate_special_characters'),
+        '#required' => TRUE,
     );
     $form['submit'] = array(
         '#type' => 'submit',
@@ -107,6 +110,8 @@ function element_validate_direction($element) {
     if ($element['#value'] == 'left') {
         $flag = 1;
     }
+    var_dump($element['#value']);
+    echo ($element['#value']);
     if ($element['#value'] == 'right') {
         $flag = 1;
     }
