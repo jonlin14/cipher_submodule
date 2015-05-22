@@ -85,7 +85,7 @@ function cipher_form_submit($form, &$form_state) {
                 array_push($word_array_into_int, chr($element));
             }
             elseif ($element >= 0 && $element <= 26) {
-                $element += $shift_Value;
+                $element += $shift_value;
                 $element += 97;
                 array_push($word_array_into_int, chr($element));
             }
