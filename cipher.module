@@ -103,9 +103,8 @@ function show_results() {
 }
 
 function element_validate_direction($element) {
-    if (($element['#value'] !== 'left') || ($element['#value'] !== 'right')) {
-        form_error($element, t('Direction must be "left" or "right"'));
-    }
+    if ($element['#value'] > != 'left' || $element['#value'] != 'right') {
+        form_error($element, t('Direction must be right or left'));
 }
 
 function element_validate_special_characters($element) {
